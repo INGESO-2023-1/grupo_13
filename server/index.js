@@ -16,7 +16,7 @@ app.use(cors());
 app.use(morgan("dev"));
 
 io.on("connection", (socket) => {
-    console.log(socket.id);
+    console.log(socket.id + " connected");
     socket.on("message", (message) => {
         console.log(message);
         socket.broadcast.emit("message", {
