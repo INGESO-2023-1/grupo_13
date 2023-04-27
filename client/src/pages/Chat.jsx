@@ -24,7 +24,7 @@ function Chat() {
     useEffect(() => {
       const reciveMessage = (message) => {
         setMessages([...messages, message]);
-      }
+      };
   
       socket.on("message", reciveMessage);
   
@@ -35,8 +35,8 @@ function Chat() {
 
     return (
       <div className="App">
-      <ChatInput message={message} setMessage={setMessage} handleSubmit={handleSubmit} />
-      <ChatMessages messages={messages}/>
+        <ChatMessages messages={messages}/>
+        <ChatInput message={message} setMessage={setMessage} handleSubmit={handleSubmit} />
       </div>
     );
 }

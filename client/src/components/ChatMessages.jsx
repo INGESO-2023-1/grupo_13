@@ -2,13 +2,12 @@ import React from "react";
 
 function ChatMessages({ messages }) {
   return (
-    <>
-      {messages.map((message, index) => (
-        <div key={index}>
-          <p>{message.from}: {message.body}</p>
-        </div>
+    <div className="ChatMessages">
+
+      {messages.map((message) => (
+          <p className={`ChatMsg ${message.from === "Me" ? "MyMsg" : "TheirMsg"}`}>{message.from}: {message.body}</p>
       ))}
-    </>
+    </div>
   );
 }
 
