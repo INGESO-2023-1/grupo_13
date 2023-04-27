@@ -1,12 +1,14 @@
 import io from "socket.io-client";
 import React, { useState, useEffect } from "react";
 import '../styles/Chat.css';
+import ChatMessages from "../components/ChatMessages";
+import ChatInput from "../components/ChatInput";
 
+const socket = io("http://localhost:4000");
 
 function Chat() {
     const [message, setMessage] = useState("");
     const [messages, setMessages] = useState([]);
-    const socket = io("http://localhost:4000");
   
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -32,19 +34,10 @@ function Chat() {
     }, [messages]);
 
     return (
-        <div className="App">
-        <form onSubmit={handleSubmit}>
-            <input type="text" onChange={e => setMessage(e.target.value)}
-            value={message}
-            />
-            <button>send</button>
-        </form>
-        {messages.map((message, index) => (
-            <div key={index}>
-            <p>{message.from}: {message.body}</p>
-            </div>
-        ))}
-        </div>
+      <div className="App">
+      <ChatInput message={message} setMessage={setMessage} handleSubmit={handleSubmit} />
+      <ChatMessages messages={messages}/>
+      </div>
     );
 }
 
