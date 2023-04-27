@@ -7,10 +7,12 @@ Este es el repositorio del _Grupo 13_, cuyos integrantes son:
 * Beatrice Valdés 
 
 # Indicaciones Necesarias
-Para instalar los paquetes hay que ejecutar estos comandos en la terminal
+En la carpeta de **_server_** y de **_client_** se debe ejecutar el siguiente comando en la terminal para instalar los paquetes necesarios:
 
-`npm i express socket.io cors morgan` en la carpeta raiz
+`npm install` en la carpeta **_server_** y carpeta **_client_** por separado
 
-`npm i nodemon -D` en la carpeta raiz
+Terminada la instalación se deben ejecutar los siguientes comandos en la terminal para iniciar el programa:
 
-`npm install` en la carpeta client
+`npm run dev` en la carpeta **_server_**
+
+`npm start` en la carpeta **_client_**
