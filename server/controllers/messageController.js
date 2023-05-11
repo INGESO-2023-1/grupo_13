@@ -1,5 +1,7 @@
 import Messages  from "../models/messageModel.js"
 
+
+//obtiene los mensajes de un usuario con otro usuario
 const getMessages = async (req, res, next) => {
     try {
       const { from, to } = req.body;
@@ -22,6 +24,8 @@ const getMessages = async (req, res, next) => {
     }
   };
 
+
+//agrega un mensaje a la base de datos 
 const addMessage = async (req, res, next) => {
     try {
       const { from, to, message } = req.body;

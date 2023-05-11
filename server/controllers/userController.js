@@ -1,7 +1,7 @@
 import User  from "../model/userModel.js";
 import bcrypt from "bcrypt";
 
-
+// registra a un usuario en la base de datos
 const register = async (req, res, next) => {
 
     try {
@@ -27,6 +27,7 @@ const register = async (req, res, next) => {
     }
 };
 
+//verifica si el usuario esta en la base de datos
 const login = async (req, res, next) => {
 
     try {
@@ -46,6 +47,7 @@ const login = async (req, res, next) => {
     }
 };
 
+//obtiene todos los usuarios de la base de datos
 const getAllUsers = async (req, res, next) => {
     try {
         const users = await User.find({_id:{$ne:req.params.id}}).select([
@@ -57,6 +59,7 @@ const getAllUsers = async (req, res, next) => {
     }
 };
 
+//setea un avatar para un usuario dado
 const setAvatar = async (req, res, next) => {
     try {
       const userId = req.params.id;
@@ -78,7 +81,7 @@ const setAvatar = async (req, res, next) => {
     }
   };
 
-  
+//desloguea al usuario de la app
 const logOut = (req, res, next) => {
     try {
       if (!req.params.id) return res.json({ msg: "User id is required " });
