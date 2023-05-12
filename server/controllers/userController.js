@@ -5,7 +5,7 @@ import bcrypt from "bcrypt";
 const register = async (req, res, next) => {
 
     try {
-        const { name, email, password } = req.body;
+        const { username, email, password } = req.body;
         const usernameCheck = await User.findOne({ username: username });
         if(usernameCheck){
             return res.json({message: "Username already exists", status: false});  
@@ -15,7 +15,7 @@ const register = async (req, res, next) => {
             return res.json({message: "Email already exists", status: false});  
         }
         const hashedPassword = await bcrypt.hash(password, 10);
-        const user = new User.create({
+        const user = await User.create({
             email,
             username,
             password: hashedPassword,
@@ -31,7 +31,7 @@ const register = async (req, res, next) => {
 const login = async (req, res, next) => {
 
     try {
-        const { name, password } = req.body;
+        const { username, password } = req.body;
         const user = await User.findOne({ username: username });
         if(!user){
             return res.json({message: "incorrect username or password", status: false});  
@@ -51,7 +51,7 @@ const login = async (req, res, next) => {
 const getAllUsers = async (req, res, next) => {
     try {
         const users = await User.find({_id:{$ne:req.params.id}}).select([
-            "email", "username", "_id"
+            "email", "username", "avatarImage",  "_id"
         ]);
         return res.json(users)
     } catch (error) {
@@ -59,7 +59,7 @@ const getAllUsers = async (req, res, next) => {
     }
 };
 
-//setea un avatar para un usuario dado
+//setea un avatar para un usuario dado 
 const setAvatar = async (req, res, next) => {
     try {
       const userId = req.params.id;
