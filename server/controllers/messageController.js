@@ -1,4 +1,4 @@
-import Messages  from "../models/messageModel.js"
+import Messages  from "../model/messageModel.js"
 
 
 //obtiene los mensajes de un usuario con otro usuario
