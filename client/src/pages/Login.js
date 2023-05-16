@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button, Card } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { loginRoute, registerRoute } from "../utils/APIRoutes";
+import { loginRoute } from "../utils/APIRoutes";
 
 const Login = () => {
+  const navigate = useNavigate();
+
   const [values, setValues] = useState({
     username: "",
     password: "",
@@ -29,22 +32,29 @@ const Login = () => {
     theme: "colored",
   };
 
+  useEffect(() => {
+    if (localStorage.getItem("chat-user")) {
+      navigate("/");
+    }
+  }, []);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (handleValidation()) {
       const { confirmPassword: _, ...registerValues } = values;
-      const { data } = await axios.post(registerRoute, registerValues);
+      const { data } = await axios.post(loginRoute, registerValues);
       if (data.status === false) {
         toast.error(data["message"], toastErrorOptions);
       } else {
-        toast.success("User created successfully", toastSuccessOptions);
-        console.log("wena");
+        toast.success("Successfully logged in", toastSuccessOptions);
+        localStorage.setItem("chat-user", JSON.stringify(values.username));
+        navigate("/");
       }
     }
   };
 
   const handleValidation = () => {
-    const { username, email, password, confirmPassword } = values;
+    const { username, password } = values;
     let status = true;
 
     // Validate username
@@ -56,17 +66,6 @@ const Login = () => {
       status = false;
     }
 
-    // Validate email
-    if (email.length > 50) {
-      toast.error("Email length must be least than 50", toastErrorOptions);
-      status = false;
-    }
-
-    // Validate password
-    if (password !== confirmPassword) {
-      toast.error("Passwords must match.", toastErrorOptions);
-      status = false;
-    }
     if (password.length < 8) {
       toast.error("Password length must be at least 8.");
       status = false;
@@ -112,6 +111,7 @@ const Login = () => {
         </Card.Body>
       </Card>
       <ToastContainer />
+      <p>{localStorage.getItem("chat-user")}</p>
     </div>
   );
 };

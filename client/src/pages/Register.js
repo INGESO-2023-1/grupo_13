@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Form, Button, Card } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import { registerRoute } from "../utils/APIRoutes";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [values, setValues] = useState({
     username: "",
     email: "",
@@ -40,6 +42,8 @@ const Register = () => {
         toast.error(data["message"], toastErrorOptions);
       } else {
         toast.success("User created successfully", toastSuccessOptions);
+        localStorage.setItem("chat-user", JSON.stringify(values.username));
+        navigate("/");
       }
     }
   };
@@ -133,6 +137,7 @@ const Register = () => {
         </Card.Body>
       </Card>
       <ToastContainer />
+      <p>{localStorage.getItem("chat-user")}</p>
     </div>
   );
 };
