@@ -8,7 +8,7 @@ const contactSchema = new mongoose.Schema({
         max: 20,
     },
     friend: {
-        type: String,
+        type: [String],
         required: true,
         min: 3,
         max: 20,
