@@ -6,11 +6,10 @@ import DisplayContacts from "../components/DisplayContacts";
 const Contacts = () => {
   const [contacts, setContacts] = useState([]);
   const getContacts = async () => {
-    const { data } = await axios.get(
-      `${getContactsRoute}/${localStorage
-        .getItem("chat-user")
-        .replace(/"/g, "")}`
-    );
+    let ola = localStorage.getItem("chat-user");
+    ola = ola != null ? ola.replace(/"/g, "") : ola;
+
+    const { data } = await axios.get(`${getContactsRoute}/${ola}`);
     console.log(Object.entries(data)[1][1]);
     setContacts(Object.entries(data)[1][1]);
   };

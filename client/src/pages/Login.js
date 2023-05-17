@@ -4,6 +4,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { loginRoute } from "../utils/APIRoutes";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -108,6 +109,14 @@ const Login = () => {
               Login
             </Button>
           </Form>
+
+          <div className="d-flex justify-content-center h-100">
+            <Link to="/register">
+              <Button variant="secondary" className="w-100">
+                Register
+              </Button>
+            </Link>
+          </div>
         </Card.Body>
       </Card>
       <ToastContainer />
