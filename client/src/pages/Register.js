@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { Form, Button, Card } from "react-bootstrap";
 import { ToastContainer, toast } from "react-toastify";
 import axios from "axios";
 import { registerRoute } from "../utils/APIRoutes";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -32,6 +33,12 @@ const Register = () => {
     progress: undefined,
     theme: "colored",
   };
+
+  useEffect(() => {
+    if (localStorage.getItem("chat-user")) {
+      navigate("/");
+    }
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -134,6 +141,13 @@ const Register = () => {
               Register
             </Button>
           </Form>
+          <div className="d-flex justify-content-center h-100">
+            <Link to="/login">
+              <Button variant="secondary" className="w-100">
+                Log in
+              </Button>
+            </Link>
+          </div>
         </Card.Body>
       </Card>
       <ToastContainer />

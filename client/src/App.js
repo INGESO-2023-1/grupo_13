@@ -7,6 +7,7 @@ import Chat from "./pages/Chat";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Logout from "./pages/Logout";
+import Contacts from "./pages/Contacts";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/logout" element={<Logout />} />
+        <Route path="/contacts" element={<Contacts />} />
       </Routes>
     </BrowserRouter>
   );

@@ -4,6 +4,7 @@ import "../styles/Chat.css";
 import ChatMessages from "../components/ChatMessages";
 import ChatInput from "../components/ChatInput";
 import { useNavigate } from "react-router-dom";
+import Contacts from "./Contacts";
 
 const socket = io("http://localhost:4000");
 
@@ -44,6 +45,7 @@ function Chat() {
   return (
     <div className="App">
       <p>{localStorage.getItem("chat-user")}</p>
+      <Contacts />
       <ChatMessages messages={messages} />
       <ChatInput
         message={message}
