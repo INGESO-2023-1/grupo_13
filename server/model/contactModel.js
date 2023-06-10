@@ -6,6 +6,7 @@ const contactSchema = new mongoose.Schema({
         required: true,
         min: 3,
         max: 20,
+        unique: true,
     },
     friend: {
         type: [String],
@@ -15,4 +16,4 @@ const contactSchema = new mongoose.Schema({
     },
 });
 
-export default mongoose.model('contacts', contactSchema);
+export default mongoose.model('contacts_try', contactSchema);
