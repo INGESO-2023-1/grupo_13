@@ -6,6 +6,8 @@ Este es el repositorio del _Grupo 13_, cuyos integrantes son:
 * Daniel Parraguez 
 * Beatrice Valdés 
 
+Nota: El proyecto final esta ubicada en la rama dev
+
 # Indicaciones Necesarias
 En la carpeta de **_server_** y de **_client_** se debe ejecutar el siguiente comando en la terminal para instalar los paquetes necesarios:
 
