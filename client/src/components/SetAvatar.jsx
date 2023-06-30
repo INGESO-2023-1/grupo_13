@@ -66,14 +66,9 @@ export default function SetAvatar() {
   }, []);
   return (
     <>
-      {isLoading ? (
-        <Container>
-          <img src={loader} alt="loader" className="loader" />
-        </Container>
-      ) : (
         <Container>
           <div className="title-container">
-            <h1>Pick an Avatar as your profile picture</h1>
+            <h1>Selecciona un Avatar para tu foto de perfil</h1>
           </div>
           <div className="avatars">
             {avatars.map((avatar, index) => {
@@ -94,11 +89,10 @@ export default function SetAvatar() {
             })}
           </div>
           <button onClick={setProfilePicture} className="submit-btn">
-            Set as Profile Picture
+            Establecer como Foto de Perfil
           </button>
           <ToastContainer />
         </Container>
-      )}
     </>
   );
 }
@@ -109,7 +103,7 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
   gap: 3rem;
-  background-color: #131324;
+  background-color: #00FFFF;
   height: 100vh;
   width: 100vw;
 
@@ -140,11 +134,11 @@ const Container = styled.div`
       }
     }
     .selected {
-      border: 0.4rem solid #4e0eff;
+      border: 0.4rem solid #006400;
     }
   }
   .submit-btn {
-    background-color: #4e0eff;
+    background-color: #006400;
     color: white;
     padding: 1rem 2rem;
     border: none;
@@ -154,7 +148,7 @@ const Container = styled.div`
     font-size: 1rem;
     text-transform: uppercase;
     &:hover {
-      background-color: #4e0eff;
+      background-color: #006400;
     }
   }
 `;

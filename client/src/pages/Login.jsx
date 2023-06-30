@@ -12,10 +12,10 @@ export default function Login() {
   const [values, setValues] = useState({ username: "", password: "" });
   const toastOptions = {
     position: "bottom-right",
-    autoClose: 8000,
+    autoClose: 5000,
     pauseOnHover: true,
     draggable: true,
-    theme: "dark",
+    theme: "colored",
   };
   useEffect(() => {
     if (localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)) {
@@ -66,8 +66,7 @@ export default function Login() {
       <FormContainer>
         <form action="" onSubmit={(event) => handleSubmit(event)}>
           <div className="brand">
-            <img src={Logo} alt="logo" />
-            <h1>snappy</h1>
+            <h1>Login</h1>
           </div>
           <input
             type="text"
@@ -84,7 +83,7 @@ export default function Login() {
           />
           <button type="submit">Log In</button>
           <span>
-            Don't have an account ? <Link to="/register">Create One.</Link>
+            No tienes cuenta? <Link to="/register">Register</Link>
           </span>
         </form>
       </FormContainer>
@@ -101,7 +100,7 @@ const FormContainer = styled.div`
   justify-content: center;
   gap: 1rem;
   align-items: center;
-  background-color: #131324;
+  background-color: #00FFFF;
   .brand {
     display: flex;
     align-items: center;
@@ -111,7 +110,7 @@ const FormContainer = styled.div`
       height: 5rem;
     }
     h1 {
-      color: white;
+      color: black;
       text-transform: uppercase;
     }
   }
@@ -120,25 +119,25 @@ const FormContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 2rem;
-    background-color: #00000076;
+    background-color: #F0FFFF;
     border-radius: 2rem;
     padding: 5rem;
   }
   input {
     background-color: transparent;
     padding: 1rem;
-    border: 0.1rem solid #4e0eff;
+    border: 0.1rem solid #000000;
     border-radius: 0.4rem;
-    color: white;
+    color: black;
     width: 100%;
     font-size: 1rem;
     &:focus {
-      border: 0.1rem solid #997af0;
+      border: 0.1rem solid #000000;
       outline: none;
     }
   }
   button {
-    background-color: #4e0eff;
+    background-color: #696969;
     color: white;
     padding: 1rem 2rem;
     border: none;
@@ -148,11 +147,11 @@ const FormContainer = styled.div`
     font-size: 1rem;
     text-transform: uppercase;
     &:hover {
-      background-color: #4e0eff;
+      background-color: #000000;
     }
   }
   span {
-    color: white;
+    color: black;
     text-transform: uppercase;
     a {
       color: #4e0eff;
